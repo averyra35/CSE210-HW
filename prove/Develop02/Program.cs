@@ -1,7 +1,7 @@
 using System;
+
 namespace JournalWriting
 {
-
     public class Menu
     {
         static void Main(string[] args)
