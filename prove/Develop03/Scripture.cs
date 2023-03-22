@@ -6,38 +6,38 @@ namespace Memorizing
 {
     public class Scripture
     {
-        private List<string> scripture = new List<string>();
+        private List<string> _scripture = new List<string>();
         private string reference = "";
         private string text = "";
         private List<Verse> verses = new List<Verse>();
 
-        public Scripture (string scripture)
+        public Scripture ()
         {
-            string[] scriptureVerses = scripture.Split("|", StringSplitOptions.RemoveEmptyEntries);
+            setScripture();
+            string[] scriptureVerses = string.Join(" ", _scripture).Split("|", StringSplitOptions.RemoveEmptyEntries);
             reference = scriptureVerses[0];
-            text = scriptureVerses[1];
+            text = scriptureVerses[1].Replace(" $ ", "\n");
             SeparateVerses();
         }
 
         public void setScripture()
         {
-            scripture = new List<string>(System.IO.File.ReadAllLines("Scripture.txt"));
+            _scripture = new List<string>(System.IO.File.ReadAllLines("Scripture.txt"));
         }
         
-        public List<string> giveScripture()
+        public string giveScripture()
         {
-            return scripture;
+            return reference + text;
         }
 
-        public void DisplayVerses()
+        public string GetVerses()
         {
-            Console.WriteLine($"\n{reference}");
+            string scriptureText = "";
             foreach (Verse verse in verses)
             {
-                verse.DisplayVerse();
-                Console.WriteLine();
+                scriptureText += verse.DisplayVerse() + "\n";
             }
-            Console.WriteLine();
+            return reference + "\n" + scriptureText;
         }
 
         private void SeparateVerses()
@@ -55,6 +55,20 @@ namespace Memorizing
             foreach (Verse verse in verses)
             {
                 verse.HideWords();
+            }
+        }
+
+        public bool CheckCompletion()
+        {
+            string s = GetVerses().Replace(reference, "").Replace("_", "").Replace(" ", "").Replace("\n", "");
+            Console.WriteLine(s);
+            if (s == "")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

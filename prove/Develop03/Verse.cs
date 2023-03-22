@@ -6,7 +6,7 @@ namespace Memorizing
     public class Verse
     {
         private string _verse;
-        private List<Words> words = new List<Words>();
+        private List<Word> words = new List<Word>();
         private List<int> indexes = new List<int>();
 
         public Verse(string verse)
@@ -20,18 +20,19 @@ namespace Memorizing
             string[] splitWords = _verse.Split(" ", StringSplitOptions.RemoveEmptyEntries);
             foreach (string word in splitWords)
             {
-                Words newWord = new Words(word);
+                Word newWord = new Word(word);
                 words.Add(newWord);
             }
         }
 
-        public void DisplayVerse()
+        public string DisplayVerse()
         {
-            foreach (Words word in words)
+            string text = "";
+            foreach (Word word in words)
             {
-                word.DisplayWord();
-                Console.Write(" ");
+                text += word.DisplayWord() + " ";
             }
+            return text;
         }
 
         private int GetRandomIndex(int maximum)
@@ -48,20 +49,20 @@ namespace Memorizing
         
         public void HideWords()
         {
-            int amountToHide = 4;
+            int amountToHide = 2;
 
-            if (words.Count == indexes.Count)
+            if (words.Count() == indexes.Count())
             {
                 return;
             }
-            else if (words.Count - 4 <= indexes.Count)
+            else if (words.Count() - 2 <= indexes.Count())
             {
-                amountToHide = words.Count - indexes.Count;
+                amountToHide = words.Count() - indexes.Count();
             }
 
             for (int i = 0; i < amountToHide; i++)
             {
-                words[GetRandomIndex(words.Count)].HideWord();
+                words[GetRandomIndex(words.Count())].HideWord();
             }
         }
     }

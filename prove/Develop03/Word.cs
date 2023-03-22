@@ -2,13 +2,13 @@ using System;
 
 namespace Memorizing
 {
-    public class Words
+    public class Word
     {
         private string _word;
         private string hiddenWord = "";
         private bool isHidden = false;
 
-        public Words(string word)
+        public Word(string word)
         {
             _word = word;
             GetHiddenWord();
@@ -30,16 +30,9 @@ namespace Memorizing
             }
         }
 
-        public void DisplayWord()
+        public string DisplayWord()
         {
-            if (isHidden)
-            {
-                Console.Write(hiddenWord);
-            }
-            else
-            {
-                Console.Write(_word);
-            }
+            return (isHidden) ? hiddenWord : _word;
         }
 
         public void HideWord()
