@@ -51,7 +51,7 @@ namespace Memorizing
         {
             int amountToHide = 2;
 
-            if (words.Count() == indexes.Count())
+            if (words.Count() == indexes.Count()
             {
                 return;
             }
