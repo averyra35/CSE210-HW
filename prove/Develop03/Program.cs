@@ -13,7 +13,7 @@ namespace Memorizing
             
             Console.Write("\nPress Enter key to continue or type 'quit' to finish:");
             string input = Console.ReadLine();
-            while (input != "quit" && !s.CheckCompletion()
+            while (input != "quit" && !s.CheckCompletion())
             {
                 o.clearScreen();
                 s.HideWords();

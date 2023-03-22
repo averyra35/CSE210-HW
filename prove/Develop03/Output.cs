@@ -4,7 +4,7 @@ namespace Memorizing
 {
     public class Output
     {
-        public void clearScreen(
+        public void clearScreen()
         {
             Console.Clear();
         }

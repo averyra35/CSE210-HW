@@ -11,7 +11,7 @@ namespace Memorizing
         public Word(string word)
         {
             _word = word;
-            GetHiddenWord()
+            GetHiddenWord();
         }
 
         private void GetHiddenWord()

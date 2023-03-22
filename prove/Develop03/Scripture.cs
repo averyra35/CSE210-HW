@@ -25,7 +25,7 @@ namespace Memorizing
             _scripture = new List<string>(System.IO.File.ReadAllLines("Scripture.txt"));
         }
         
-        public string giveScripture(
+        public string giveScripture()
         {
             return reference + text;
         }
