@@ -14,7 +14,7 @@ namespace Activities
             activities["1"] = b;
             activities["2"] = r;
             activities["3"] = l;
-            string choice = "0";
+            string choice = "";
 
             while (choice != "4")
             {

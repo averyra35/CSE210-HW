@@ -1,11 +1,12 @@
 using System;
 using System.Diagnostics;
+
 namespace Activities
 {
     class Activity
     {
         List<string> _prompt = new List<string>();
-        int _timerLength = 0;
+        private int _timerLength = 0;
         string chosenPrompt = "";
 
         public Activity (){}
@@ -25,10 +26,8 @@ namespace Activities
             return chosenPrompt;
         }
 
-        public virtual int Duration()
-        {
-            return _timerLength;
-        }
+        public virtual void Duration()
+        { }
 
         public void Timer()
         {
@@ -37,7 +36,6 @@ namespace Activities
                 Console.WriteLine(i);
                 Thread.Sleep(1000);
                 Console.Write("\b\b  \b");
-
             }
         }
 
@@ -54,10 +52,10 @@ namespace Activities
             animation.Add("\\");
             
                 DateTime startTime = DateTime.Now;
-                DateTime endTime = startTime.AddSeconds(1000000);
+                DateTime endingTime = startTime.AddSeconds(5);
 
                 int i = 0;
-                while (DateTime.Now < endTime)
+                while (DateTime.Now < endingTime)
                 {
                     string s = animation[i];
                     Console.Write(s);
