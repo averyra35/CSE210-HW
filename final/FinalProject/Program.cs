@@ -1,9 +1,15 @@
 using System;
 
-class Program
+namespace EquationSolver
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Hello FinalProject World!");
+        static void Main (string[] args)
+        {
+            Equations e = new Equations();
+            e.Menu();
+        }
+        public virtual void Menu ()
+        {            }
     }
 }
